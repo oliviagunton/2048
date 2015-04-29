@@ -4,7 +4,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
 
-  this.startTiles     = 2;
+  this.startTiles     = size * size; // Change from original: start with grid filled
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -59,9 +59,21 @@ GameManager.prototype.setup = function () {
 };
 
 // Set up the initial tiles to start the game with
+// Change from original: populate tiles with successive powers of 2 in a snaking pattern
 GameManager.prototype.addStartTiles = function () {
-  for (var i = 0; i < this.startTiles; i++) {
-    this.addRandomTile();
+  var cells = this.grid.availableCells();
+  var value = 2;
+  var loc = 0;
+  var size = this.size;
+  for (var i = 0; i < size; i++){
+  	for (var j = 0; j < size; j++){
+  		loc = (i % 2 == 0)? (size * i) + j : (size * i) + (size - j - 1);
+  		tile = new Tile(cells[loc], value);
+  		this.grid.insertTile(tile);
+  		if(i != 0 || j != 0){ //(0,0) and (0, 1) should get the same value so we can combine them
+  			value = value * 2;
+  		}
+  	}
   }
 };
 
