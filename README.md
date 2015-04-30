@@ -1,4 +1,14 @@
-# 2048
+# Easy 65536
+
+After playing a bit too much of [Gabriele Cirulli's 2048](http://gabrielecirulli.github.io/2048/), I decided to make a version that would set up a satisfying series of tiles to combine into one big number. This was mostly an exercise to get reacquainted with JavaScript and play around with the "iterate in a snake pattern" algorithm.
+
+### Screenshot
+
+<p align="center">
+  <img src="/blob/gh-pages/easy65536screenshot.tiff?raw=true" alt="Screenshot"/>
+</p>
+
+## Credits for original 2048 game: 
 A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
 
 Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
